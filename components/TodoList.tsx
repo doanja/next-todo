@@ -27,19 +27,16 @@ const TodoList = () => {
 
   const deleteTodo = (todoId: string) => {
     const filteredTodos = todos.filter((todo: Todo) => todo.id !== todoId);
-    console.log('filteredTodos :>> ', filteredTodos);
     setTodos(filteredTodos);
   };
 
   const toggleCompleted = (todoId: string) => {
     const completedTodos = todos.map((todo: Todo) => {
       if (todo.id === todoId) {
-        todo.completed = todo.completed;
+        todo.completed = !todo.completed;
       }
       return todo;
     });
-
-    console.log('completedTodos :>> ', completedTodos);
 
     setTodos(completedTodos);
   };
@@ -49,7 +46,7 @@ const TodoList = () => {
       <TodoForm addTodo={addTodo} />
 
       {todos.map((todo: Todo) => (
-        <Todo todo={todo} />
+        <Todo todo={todo} deleteTodo={deleteTodo} toggleCompleted={toggleCompleted} />
       ))}
     </div>
   );
