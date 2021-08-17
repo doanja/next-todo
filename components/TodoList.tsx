@@ -46,7 +46,7 @@ const TodoList = () => {
       <TodoForm addTodo={addTodo} />
 
       {todos.map((todo: Todo) => (
-        <Todo todo={todo} deleteTodo={deleteTodo} toggleCompleted={toggleCompleted} />
+        <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleCompleted={toggleCompleted} />
       ))}
     </div>
   );
